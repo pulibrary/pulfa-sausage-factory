@@ -54,12 +54,14 @@ begin
 	METS_PATH = conf['directories']['mets_final_root']
 	EAD_PATH = conf['directories']['ead_root']
 
+	#test for proc-1... just do a small array of files
+        C0022_array = ["c0031", "c0032", "c0033", "c0034", "c0035", "c0036"]
 
 	# Start iterating...
 	if(File.exists?(jp2_store + callno))
 	    Dir.foreach(jp2_store + callno) {|component| 
 	    
-			if(!component.include?('.'))
+			if(!component.include?('.') && C0022_array.include?(component))
 			   component_id = callno + '/' + component
 			    
 			   if(!File.exists?(jp2_store + component_id + '.pdf'))
@@ -132,7 +134,7 @@ begin
 					file.close
 				
 				# make pdf
-				cmd = 'sudo sh ./dirtopdf.sh -d -s 3200 -o ' + jp2_store + component_id + '.pdf ' + tiff_store + component_id
+				cmd = 'sudo bash ./dirtopdf.sh -d -s 3200 -o ' + jp2_store + component_id + '.pdf ' + tiff_store + component_id
 				puts cmd
 				system(cmd)
 			end

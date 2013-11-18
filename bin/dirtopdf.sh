@@ -102,7 +102,8 @@ for in_img in $(eval $FIND_CMD | sort); do
 	if [ "x$RESIZE" != "x"  ]; then
 		cvt="$cvt -resize $RESIZE"x"$RESIZE"
 	fi
-	cvt="$cvt -colorspace Gray -compress JPEG -quality 60 $in_img $out"
+	#cvt="$cvt -colorspace Gray -compress JPEG -quality 60 $in_img $out"
+	cvt="$cvt -compress JPEG -quality 60 $in_img $out"
 	
 	if [ $SHOW_DEBUG_OUTPUT == 0 ]; then 
 		echo $cvt

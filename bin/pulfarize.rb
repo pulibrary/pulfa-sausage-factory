@@ -79,10 +79,12 @@ end
 
 begin
     # vars
-    db_path = '/home/shaune/workspace/ib/ib.db'
-    jp2_store = '/usr/share/images/libserv64/vol2/pudl/'
+    db_path = '/home/systems/workspace/temp/ib.db'
+    #jp2_store = '/usr/share/images/libserv64/vol2/pudl/'
+    jp2_store = '/mnt/libserv64/vol2/pudl'
     # jp2_store = '/tmp/jp2s/'
-	tiff_store = '/usr/share/images/libserv37/dps/'
+    tiff_store = '/mnt/diglibdata/archives'    
+	# tiff_store = '/usr/share/images/libserv37/dps/'
 	# tiff_store = '/tmp/tiffs/'
 	_ETC = File.dirname(Dir.pwd) + '/etc'
 	_LIB = File.dirname(Dir.pwd) + '/lib'
