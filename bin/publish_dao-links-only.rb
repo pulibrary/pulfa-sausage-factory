@@ -39,13 +39,8 @@ begin
 
     # vars
 	pufla_url = 'http://findingaids.princeton.edu/collections/'
-        jp2_store = '/mnt/libserv64/vol2/pudl/'
-    # jp2_store = '/tmp/jp2s/'
+        jp2_store = '/mnt/libimages/data/jp2s/'
 	tiff_store = '/mnt/diglibdata/archives/'
-	# tiff_store = '/mnt/libserv37/dps/'
-	#tiff_store = '/mnt/libserv64/vol4/'
-	#tiff_store = '/usr/share/images/libserv64/vol4/'
-	# tiff_store = '/tmp/tiffs/'
 	_ETC = File.dirname(Dir.pwd) + '/etc'
 	_LIB = File.dirname(Dir.pwd) + '/lib'
 	conf = ParseConfig.new( _ETC + '/main.conf' )

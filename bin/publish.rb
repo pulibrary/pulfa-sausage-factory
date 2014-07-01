@@ -55,13 +55,16 @@ begin
 	EAD_PATH = conf['directories']['ead_root']
 
 	#test for proc-1... just do a small array of files
-        C0022_array = ["c0031", "c0032", "c0033", "c0034", "c0035", "c0036"]
+        #C0022_array = ["c0031", "c0032", "c0033", "c0034", "c0035", "c0036"]
+
+	repo = ""	
 
 	# Start iterating...
 	if(File.exists?(jp2_store + callno))
 	    Dir.foreach(jp2_store + callno) {|component| 
 	    
-			if(!component.include?('.') && C0022_array.include?(component))
+			#if(!component.include?('.') && C0022_array.include?(component))
+			if(!component.include?('.'))
 			   component_id = callno + '/' + component
 			    
 			   if(!File.exists?(jp2_store + component_id + '.pdf'))
@@ -107,8 +110,10 @@ begin
 				collection_url = pufla_url + callno + '.xml'
 				col = `curl #{collection_url}` 
 					col_xml = Nokogiri::HTML(col)
-					
+				
+				if(repo.empty?) 	
 					repo = col_xml.xpath('//archdesc/did/repository/@id').text
+				end
 				
 				ead_file = EAD_PATH + '/' + repo + '/' + callno + '.EAD.xml'
 				

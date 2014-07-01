@@ -79,11 +79,14 @@ end
 
 begin
     # vars
-    db_path = '/home/systems/workspace/temp/ib.db'
+    #db_path = '/home/systems/workspace/temp/ib.db'
+    db_path = '/home/systems/workspace/temp/MC215.db'
     #jp2_store = '/usr/share/images/libserv64/vol2/pudl/'
-    jp2_store = '/mnt/libserv64/vol2/pudl'
+    #jp2_store = '/mnt/libserv64/vol2/pudl/'
+    jp2_store = '/mnt/libimages/data/jp2s/'  
     # jp2_store = '/tmp/jp2s/'
-    tiff_store = '/mnt/diglibdata/archives'    
+    #tiff_store = '/mnt/diglibdata/archives/'    
+    tiff_store = '/mnt/diglibdata/pudl/'
 	# tiff_store = '/usr/share/images/libserv37/dps/'
 	# tiff_store = '/tmp/tiffs/'
 	_ETC = File.dirname(Dir.pwd) + '/etc'
@@ -95,7 +98,7 @@ begin
 	
 	db = SQLite3::Database.open db_path
 	
-	stm = db.prepare 'SELECT * FROM ImageDirs where Note=""'
+	stm = db.prepare 'SELECT * FROM ImageDirs where Note=" "'
     rs  = stm.execute
     
     rs.each do |row|
