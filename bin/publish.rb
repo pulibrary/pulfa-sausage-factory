@@ -61,8 +61,10 @@ begin
 
 	# Start iterating...
 	if(File.exists?(jp2_store + callno))
-	    Dir.foreach(jp2_store + callno) {|component| 
-	    
+            d = Dir.glob(jp2_store + callno + '/*').select {|f| File.directory? f}
+#	    Dir.foreach(jp2_store + callno) {|component| 
+	    d.each {|c| 
+	    		component = c.split("/")[-1]
 			#if(!component.include?('.') && C0022_array.include?(component))
 			if(!component.include?('.'))
 			   component_id = callno + '/' + component
