@@ -42,17 +42,6 @@ $CONVERT -rotate 180 $file $south_file
 $CONVERT -rotate 270 $file $west_file
 
 # OCR each.
-# A note about the OCR engine: I would like to be Tesseract, but the version
-# in Synaptic is not supported on 64 bit machines, and I'm not about to build
-# from source right now. Tesseract 3.01 is alleged to work on 64 bit 
-# architecture.
-# links: http://code.google.com/p/leptonica/downloads/list,
-#		 http://code.google.com/p/tesseract-ocr/downloads/list		
-# 
-# Tesseract does Unicode (gocr is ascii only), and we could pass languages,
-# etc.
-# 
-# For a good comparison, @see http://www.mscs.dal.ca/~selinger/ocr-test
 north_text="$north_file.txt"
 east_text="$east_file.txt"
 south_text="$south_file.txt"
