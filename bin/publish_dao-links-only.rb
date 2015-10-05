@@ -49,6 +49,7 @@ begin
 	METS_PATH = conf['directories']['mets_final_root']
 	EAD_PATH = conf['directories']['ead_root']
 
+	REPO = 'univarchives'
 
 	# Start iterating...
 	if(File.exists?(jp2_store + callno))
@@ -99,9 +100,9 @@ begin
 			#	col_xml = Nokogiri::HTML(col)
 				
 			#	repo = col_xml.xpath('//archdesc/did/repository/@id').text
+				
+			ead_file = EAD_PATH + '/' + REPO + '/' + callno + '.EAD.xml'
 		    	
-		        ead_file = EAD_PATH + '/publicpolicy/' + callno + '.EAD.xml'
-
                         f = File.open(ead_file)
                                 @ead = Nokogiri::XML(f)
                                 f.close
@@ -112,12 +113,15 @@ begin
                                   dao['xlink:type'] = "simple"
                                   dao['xlink:role'] = "http://www.loc.gov/METS/"
                                   dao['xlink:href'] = "http://findingaids.princeton.edu/folders/" + component_id + ".mets"
-                                  puts dao.text
+                                  puts node.to_xml
+                                  puts 'removing webspace dao...'
+                                  node.xpath('.//ead:dao', 'ead'=>"urn:isbn:1-931666-22-9").remove
+                                  puts node.to_xml
                                   node.add_child(dao)
 				  puts component_id + " added \n"
                                 end
 
-		      	new_ead = EAD_PATH + '/publicpolicy/' + callno + '.EAD.xml'
+		      	new_ead = EAD_PATH + '/' + REPO + '/' + callno + '.EAD.xml'
 		      	#new_ead = '/tmp/' + callno + '.EAD.xml'
 			
 		    	begin  
