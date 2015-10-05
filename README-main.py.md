@@ -22,10 +22,13 @@ same, and not root, e.g:
 
 Put this in /etc/fstab:
 
+```
 # Writable, for pulfa image harvesting
 //hostname.yourdomain.edu/path/to/img/store /local/path/to/img/store smbfs rw,username={username},password={password} 0 0 
+# TODO: see if we can update to use NFS on Isilon storage. May be able to simplify the steps below.
+```
 
-MAKE SURE, HOWEVER, THAT THESE ARE NOT MOUNTED WHILE YOU DO THE FOLLOWING:
+___MAKE SURE, HOWEVER, THAT THESE ARE NOT MOUNTED WHILE YOU DO THE FOLLOWING:___
 
 Then:
 1. Make a pulfa user on the machine that will run this app
